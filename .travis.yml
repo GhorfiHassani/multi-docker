@@ -2,16 +2,16 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker build  -t  ghorfi/react-test -f  ./client/Dockerfile.dev ./client
+  - docker build  -t  hassanihassanighorfi/react-test -f  ./client/Dockerfile.dev ./client
 script:
-  - docker run -e CI=true ghorfi/react-test  npm test  --  --coverage
+  - docker run -e CI=true hassanighorfi/react-test  npm test  --  --coverage
 after_success:
-  - docker build -t ghorfi/multi-client ./client
-  - docker build -t ghorfi/multi-nginx ./nginx
-  - docker build -t ghorfi/multi-server ./server
-  - docker build -t ghorfi/multi-worker ./worker
+  - docker build -t hassanihassanighorfi/multi-client ./client
+  - docker build -t hassanighorfi/multi-nginx ./nginx
+  - docker build -t hassanighorfi/multi-server ./server
+  - docker build -t hassanighorfi/multi-worker ./worker
   - echo  "$DOCKER_PASSWORD" |  docker  login -u  "$DOCKER_ID"  --password-stdin
-  - docker  push  ghorfi/multi-client
-  - docker  push  ghorfi/multi-nginx
-  - docker  push  ghorfi/multi-server
-  - docker  push  ghorfi/multi-worker
+  - docker  push  hassanighorfi/multi-client
+  - docker  push  hassanighorfi/multi-nginx
+  - docker  push  hassanighorfi/multi-server
+  - docker  push  hassanighorfi/multi-worker
