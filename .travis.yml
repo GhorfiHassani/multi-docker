@@ -2,11 +2,11 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker build  -t  hassanihassanighorfi/react-test -f  ./client/Dockerfile.dev ./client
+  - docker build  -t  hassanighorfi/react-test -f  ./client/Dockerfile.dev ./client
 script:
   - docker run -e CI=true hassanighorfi/react-test  npm test  --  --coverage
 after_success:
-  - docker build -t hassanihassanighorfi/multi-client ./client
+  - docker build -t hassanighorfi/multi-client ./client
   - docker build -t hassanighorfi/multi-nginx ./nginx
   - docker build -t hassanighorfi/multi-server ./server
   - docker build -t hassanighorfi/multi-worker ./worker
